@@ -269,7 +269,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 5.4
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -310,6 +310,8 @@ GameObject:
   - component: {fileID: 1968387469}
   - component: {fileID: 1968387471}
   - component: {fileID: 1968387470}
+  - component: {fileID: 1968387472}
+  - component: {fileID: 1968387473}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -362,6 +364,41 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 68
   m_CollisionDetection: 0
+--- !u!114 &1968387472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1968387468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4f6096fb02c42145930a8af09f31b99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MouseLook: 1
+  HorzAxis: Horizontal
+  VertAxis: Vertical
+  FireAxis: Fire1
+  MaxSpeed: 5
+--- !u!114 &1968387473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1968387468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 628c82fa00a1ab14b8f2049d8780335a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelBounds:
+    serializedVersion: 2
+    x: -1.45
+    y: -1.33
+    width: 3
+    height: 2.9
 --- !u!1 &2107842582
 GameObject:
   m_ObjectHideFlags: 0
