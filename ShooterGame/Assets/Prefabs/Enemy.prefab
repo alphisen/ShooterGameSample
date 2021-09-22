@@ -91,7 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjToFace: {fileID: 0}
-  FacePlayer: 0
+  FacePlayer: 1
 --- !u!114 &402947451934897464
 MonoBehaviour:
   m_ObjectHideFlags: 0
