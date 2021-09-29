@@ -27,16 +27,23 @@ public class PlayerController : MonoBehaviour
     public string FireAxis = "Fire1";
     public float MaxSpeed = 5f;
 
+    public float ReloadDelay = 0.3f;
+    public bool CanFire = true;
+    public Transform[] TurretTransforms;
+
+
+
     private Rigidbody ThisBody = null;
 
     //Awake is called before start
 
-    private void Awake()
+    void Awake()
     {
         ThisBody = GetComponent<Rigidbody>();
+
     }
 
-    private void FixedUpdate()
+    void FixedUpdate()
     {
         float Horz = Input.GetAxis(HorzAxis);
         float Vert = Input.GetAxis(VertAxis);
@@ -47,6 +54,16 @@ public class PlayerController : MonoBehaviour
         ThisBody.velocity = new Vector3(Mathf.Clamp(ThisBody.velocity.x, -MaxSpeed, MaxSpeed),
             Mathf.Clamp(ThisBody.velocity.y, -MaxSpeed, MaxSpeed),
             Mathf.Clamp(ThisBody.velocity.z, -MaxSpeed, MaxSpeed));
+
+        if (Input.GetButtonDown(FireAxis) && CanFire)
+        {
+            foreach (Transform T in TurretTransforms)
+            {
+                AmmoManager.SpawnAmmo(T.position, T.rotation);
+            }
+            CanFire = false;
+            Invoke("EnableFire", ReloadDelay);
+        }
 
         //Look at mouse
         if (MouseLook)
@@ -59,6 +76,14 @@ public class PlayerController : MonoBehaviour
             transform.localRotation = Quaternion.LookRotation(LookDirection.normalized, Vector3.up);
         }
 
-
+     
     }
+
+    void EnableFire()
+    {
+        CanFire = true;
+    }
+
+
+
 }
