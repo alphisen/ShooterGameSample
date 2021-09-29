@@ -55,15 +55,7 @@ public class PlayerController : MonoBehaviour
             Mathf.Clamp(ThisBody.velocity.y, -MaxSpeed, MaxSpeed),
             Mathf.Clamp(ThisBody.velocity.z, -MaxSpeed, MaxSpeed));
 
-        if (Input.GetButtonDown(FireAxis) && CanFire)
-        {
-            foreach (Transform T in TurretTransforms)
-            {
-                AmmoManager.SpawnAmmo(T.position, T.rotation);
-            }
-            CanFire = false;
-            Invoke("EnableFire", ReloadDelay);
-        }
+       
 
         //Look at mouse
         if (MouseLook)
@@ -84,6 +76,18 @@ public class PlayerController : MonoBehaviour
         CanFire = true;
     }
 
-
+    private void Update()
+    {
+         if (Input.GetButtonDown(FireAxis) && CanFire)
+                {
+                    foreach (Transform T in TurretTransforms)
+                    {
+                        AmmoManager.SpawnAmmo(T.position, T.rotation);
+                    }
+                    CanFire = false;
+                    Invoke("EnableFire", ReloadDelay);
+                }
+    }
+          
 
 }
